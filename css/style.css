@@ -1,0 +1,182 @@
+/* Font */
+@font-face {
+    font-family: 'alex_brushregular';
+    src: url('alexbrush-regular-webfont.woff') format('woff'),
+        url('../fonts/alexbrush-regular-webfont.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Style utama */
+body {
+    font: 18px/36px 'alex_brushregular', 'Arial Narrow', arial, sans-serif;
+    background-image: url(../bg/serious.png);
+}
+
+h1 {
+    font-size: 80px;
+    margin: 50px 0;
+    text-align: center;
+    color: white;
+    text-shadow: 3px 3px 3px indigo;
+}
+
+.container {
+    width: 600px;
+    background-color: white;
+    margin: auto;
+    padding: 30px;
+    box-shadow: 0 0 4px 4px rgba(75, 0, 130, .5);
+    border-radius: 10px;
+}
+
+.gallery li {
+    width: 120px;
+    height: 120px;
+    /* overflow: hidden; */
+    border: 5px solid #666;
+    float: left;
+    margin-right: 20px;
+    position: relative;
+}
+
+.gallery li,
+.gallery li img,
+.gallery li span {
+    border-radius: 50%;
+}
+
+.gallery li span {
+    display: block;
+    width: 120px;
+    height: 120px;
+    background-color: rgba(200, 200, 200, .5);
+    position: absolute;
+    top: 0;
+    text-align: center;
+    line-height: 120px;
+    color: dimgrey;
+    font-size: larger;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px black;
+    opacity: 0;
+    transition: .3s;
+    transform: scale(0) rotate(0);
+}
+
+.gallery li a:hover span {
+    opacity: 1;
+    transform: scale(1) rotate(360deg);
+}
+
+
+.clear {
+    clear: both;
+}
+
+/* Overlay */
+.overlay {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgb(0, 0, 0, 0);
+    z-index: 9999;
+    transition: .8s;
+    text-align: center;
+    padding: 100px;
+}
+
+.overlay:target {
+    width: auto;
+    height: auto;
+    bottom: 0;
+    right: 0;
+    background: rgb(0, 0, 0, .8);
+}
+
+.overlay img {
+    max-height: 100%;
+    box-shadow: 0 0 7px rgba(255, 255, 255, .8);
+}
+
+.overlay:target img {
+    animation: nav 1s;
+}
+
+.overlay .close {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.overlay:target .close {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    margin-left: -28px;
+    color: white;
+    text-decoration: none;
+    background: black;
+    border: 1px solid white;
+    line-height: 14px;
+    padding: 5px;
+    animation: slideDownFade 1s .5s forwards;
+    opacity: 0;
+}
+
+.overlay:target .next {
+    animation: nav .5s .5s forwards;
+}
+
+/* Navigasi */
+.next {
+    width: 57px;
+    height: 93px;
+    background-image: url(../img/next.png);
+    position: absolute;
+    top: 45%;
+    filter: drop-shadow(5px 0 1px rgba(255, 255, 255, .5));
+    margin-left: 50px;
+    opacity: 0;
+}
+
+/* Animasi */
+@keyframes zoomDanFade {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes slideDownFade {
+    0% {
+        opacity: 0;
+        margin-top: -20px;
+    }
+
+    100% {
+        opacity: 1;
+        margin-top: 20px;
+    }
+}
+
+@keyframes nav {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
